@@ -1,0 +1,581 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDL | Molchanov Institute of Deterministic Logic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Playfair+Display:ital,wght@0,600;0,900;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-primary: #F4F4F4;
+            --text-muted: #888888;
+            --accent-red: #FF3333;
+            --border-color: #222222;
+            --card-bg: #0A0A0A;
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+
+        section {
+            padding: 8rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+        .institute-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+
+        .institute-label::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-red);
+            margin-right: 12px;
+        }
+
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1.05;
+            margin-bottom: 2.5rem;
+            max-width: 950px;
+        }
+
+
+        .hero p {
+            max-width: 750px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+
+        .hero p strong {
+            color: var(--text-primary);
+        }
+
+
+        .cta-button {
+            display: inline-block;
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--text-primary);
+            padding: 1.2rem 2.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            width: fit-content;
+            margin-top: 1rem;
+        }
+
+
+        .cta-button:hover {
+            background: var(--text-primary);
+            color: var(--bg-color);
+        }
+
+
+        /* --- SPLIT GRID (Why We're Different & The How) --- */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+
+        @media (max-width: 900px) {
+            .split-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+
+        .split-grid h2 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+        }
+
+
+        .split-grid p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+
+        .stack-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+
+        .stack-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+
+        .stack-list li strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+
+        .standout-block {
+            margin-top: 4rem;
+            padding: 3rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+
+        /* --- THE GIANTS (AUTOPSY GRID) --- */
+        .autopsy-header {
+            font-size: 3.5rem;
+            margin-bottom: 4rem;
+            line-height: 1.1;
+        }
+
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .card {
+            border: 1px solid var(--border-color);
+            padding: 3rem;
+            background: var(--card-bg);
+            transition: border-color 0.3s ease;
+        }
+
+
+        .card:hover {
+            border-color: var(--text-muted);
+        }
+
+
+        .card h3 {
+            font-size: 1.8rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+
+        .card-row {
+            margin-bottom: 1.5rem;
+        }
+
+
+        .card-label {
+            color: var(--accent-red);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+
+        .card-row p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+
+        /* --- SERVICE SUITE --- */
+        .service-list {
+            list-style: none;
+        }
+
+
+        .service-item {
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+        }
+
+
+        .service-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+
+        @media (max-width: 768px) {
+            .service-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+
+        .service-num {
+            font-size: 2rem;
+            color: var(--text-muted);
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+        }
+
+
+        .service-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+
+        .service-content p {
+            color: var(--text-muted);
+            max-width: 800px;
+            font-size: 1.05rem;
+        }
+
+
+        /* --- FOOTER TERMINAL --- */
+        footer {
+            padding: 8rem 0;
+            background: #020202;
+        }
+
+
+        .terminal-box {
+            border: 1px solid var(--border-color);
+            padding: 4rem;
+            background: var(--card-bg);
+            position: relative;
+        }
+
+
+        .terminal-box::before {
+            content: 'MIDL // SECURE_INTAKE';
+            position: absolute;
+            top: -10px;
+            left: 2rem;
+            background: var(--card-bg);
+            padding: 0 1rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+        }
+
+
+        .terminal-box h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+
+        .terminal-box p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+
+        .terminal-box .final-axiom {
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+            font-weight: 700;
+            border-left: 3px solid var(--accent-red);
+            padding-left: 1.5rem;
+        }
+
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--text-muted);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+
+        .input-group span {
+            color: var(--accent-red);
+            margin-right: 1.5rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+
+        .input-group input {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            width: 100%;
+            outline: none;
+        }
+
+
+        .input-group input::placeholder {
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+
+    <section class="hero container">
+        <div class="institute-label">Molchanov Institute of Deterministic Logic</div>
+        <h1>We Solve the Problems Your AI Can’t See.</h1>
+        <p>You’re under pressure to integrate AI into everything. You've seen the demos and they look like magic. But in production, that magic is turning into a sunk-cost fallacy. You're seeing hallucinated data, spiraling compute costs, and "autonomous" agents that require constant human intervention.</p>
+        <p>The Molchanov Institute of Deterministic Logic is a forensic clinic that steps in where the hype ends. Current AI implementations are failing due to Probabilistic Drift—where models prioritize "fluent" language over "factual" accuracy. <strong>We provide Verification.</strong></p>
+        <p>We don't just "implement" AI; we perform a Diagnostic Audit to find out exactly why your current systems aren't delivering the ROI you were promised. We aren't selling a "solution". We are selling The Floor. In the world of Deterministic Logic, there is no "best effort." There is only <span style="color: var(--accent-red);">Zero or One</span>. We don’t sell dreams. We sell the binary reality.</p>
+        <a href="#intake" class="cta-button">Request Forensic Audit</a>
+    </section>
+
+
+    <section class="container">
+        <div class="split-grid">
+            <div>
+                <h2>Why We’re Different</h2>
+                <p>Most consulting firms send you a PowerPoint presentation that regurgitates what you already know. We deploy a proprietary Logic Engine that uses a series of specialized, high-velocity protocols to "Red-Team" your architecture.</p>
+                <p>Our Logic Engine isn't a chatbot. It is a Proprietary Evaluation Stack that utilizes Formal Verification and Deterministic State-Checking. We don't just 'ask' if your AI is right. We run its outputs through a rigorous battery of symbolic logic gates that cannot be bypassed by probabilistic guessing.</p>
+            </div>
+            <div>
+                <h2>The "How": Our Evaluation Stack</h2>
+                <p>We don't use "LLM-on-LLM" evaluation, which only compounds original errors. Our Logic Engine utilizes a hybrid Neuro-Symbolic framework:</p>
+                <ul class="stack-list">
+                    <li><strong>Formal Verification:</strong> We map your AI’s reasoning paths against Hard Logic Constraints using Predicate Logic and State-Machine mapping.</li>
+                    <li><strong>Deterministic Gating:</strong> We implement "Circuit Breakers" that intercept non-grounded outputs before they reach the user or your database.</li>
+                    <li><strong>Schema Rigidity:</strong> We enforce strict data-type and relational ontologies, ensuring your agents cannot "guess" a relationship that doesn't exist in your hard data.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="standout-block">
+            Whether it's finding a hidden security vulnerability or stripping the hallucinations from your workflow, we do in 5 business days what traditional firms take 6 months to define.
+        </div>
+    </section>
+
+
+    <section class="container">
+        <h2 class="autopsy-header">We Audited the Giants.<br>Here’s What They Missed.</h2>
+        <div class="card-grid">
+            
+            <div class="card">
+                <h3>1. OpenAI</h3>
+                <div class="card-row">
+                    <span class="card-label">The Leak</span>
+                    <p style="color: var(--text-primary); font-weight: 700;">The "Stochastic Parrot" Leak</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Patient</span>
+                    <p>Sora / o1-preview agentic workflows.</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Diagnosis</span>
+                    <p>Their models are currently "hallucinating by design" to maintain a human-like tone. In their attempt to make AI friendly, they’ve introduced Semantic Softness.</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Verdict</span>
+                    <p>Great for poetry; lethal for payroll. If you ask o1 to solve a complex logistics chain, it will prioritize a fluent explanation over a mathematically sound one.</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <h3>2. Anthropic</h3>
+                <div class="card-row">
+                    <span class="card-label">The Leak</span>
+                    <p style="color: var(--text-primary); font-weight: 700;">The "Constitutional" Friction</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Patient</span>
+                    <p>Claude 3.5/4 "Constitutional AI" guardrails.</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Diagnosis</span>
+                    <p>Their "Safety" layer is actually a Compute Leak. The model spends roughly 15% of its reasoning tokens arguing with itself about whether a prompt is ethical.</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Verdict</span>
+                    <p>High-fidelity, but inefficient. You’re paying for a lecture you didn't ask for because they layered morality on top of logic instead of integrating it.</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <h3>3. Google / Gemini</h3>
+                <div class="card-row">
+                    <span class="card-label">The Leak</span>
+                    <p style="color: var(--text-primary); font-weight: 700;">The "Contextual Obesity" Trap</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Patient</span>
+                    <p>Gemini 1.5/2.0 Pro Ultra Integration.</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Diagnosis</span>
+                    <p>The model is suffering from Attention Decay. It has a massive token window but forgets the middle because the attention mechanism is spread too thin.</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Verdict</span>
+                    <p>Overbuilt Infrastructure with Under-Optimized Retrieval. You have an enterprise-scale window, but the model lacks the Pinpoint Extraction required for high-stakes decision-making.</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <h3>4. Palantir</h3>
+                <div class="card-row">
+                    <span class="card-label">The Leak</span>
+                    <p style="color: var(--text-primary); font-weight: 700;">The "Ontology" Ghost</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Patient</span>
+                    <p>AIP (Artificial Intelligence Platform).</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Diagnosis</span>
+                    <p>They are "Auto-Mapping" data relationships that don't exist in reality to satisfy the LLM’s need for a narrative.</p>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Verdict</span>
+                    <p>A surveillance powerhouse with a hallucination bug in the foundation. Their Object Model is corrupted by Agentic Inference—guessing a supplier is high-risk based on a news article, even if the ledger says they are 100% compliant.</p>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <section class="container">
+        <h2 style="font-size: 3rem; margin-bottom: 4rem;">The Service Suite:<br>5-Day Forensic Sprints</h2>
+        <ul class="service-list">
+            <li class="service-item">
+                <div class="service-num">01</div>
+                <div class="service-content">
+                    <h3>The Diagnosis</h3>
+                    <p>A no-nonsense technical report that identifies the exact AI hallucinations, "Logic Leaks," and fallacies in your stack delivered within 5 business days.</p>
+                </div>
+            </li>
+            <li class="service-item">
+                <div class="service-num">02</div>
+                <div class="service-content">
+                    <h3>Axiomatic Hardening</h3>
+                    <p>We don't just find flaws; we provide the logic gates to fix them. We build and install the deterministic architecture ensuring your AI reports system truth, not guesses. We provide the Contextual Triage to ensure your most vital data stays in the high-heat zone of the model’s reasoning.</p>
+                </div>
+            </li>
+            <li class="service-item">
+                <div class="service-num">03</div>
+                <div class="service-content">
+                    <h3 style="color: var(--accent-red);">The Kill Switch Protocol</h3>
+                    <p>A decisive exit strategy for stalled or failing AI initiatives. We provide the forensic data required to sunset projects that are beyond recovery. This isn't just about ending projects; it’s about Resource Reclamation. We identify the 20% of your architecture that is actually functional and strip away the 80% dragging your ROI into the red. We help your teams pivot from managing errors to building truth.</p>
+                </div>
+            </li>
+            <li class="service-item">
+                <div class="service-num">04</div>
+                <div class="service-content">
+                    <h3>Verification Insurance (MIDL Seal)</h3>
+                    <p>A stress-test of your AI outputs against our Logic Engine to determine "Ground Truth" reliability. Through our Axiomatic Hardening process, we certify that your system’s responses are deterministic and grounded in your specific data, significantly reducing your liability and reputational risk.</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+
+    <footer id="intake">
+        <div class="container">
+            <div class="terminal-box">
+                <h2>We stop the bleed.</h2>
+                <p>We help you justify every dollar of your AI expenses with measurable, structural results, providing the Forensic Certainty required to move your AI from "Magic" to Production-Grade Utility.</p>
+                
+                <div class="final-axiom">
+                    Your AI is guessing.<br>
+                    The Institute Knows.
+                </div>
+                
+                <form action="mailto:operations@midl.io" method="POST" enctype="text/plain">
+                    <div class="input-group">
+                        <span>></span>
+                        <input type="email" placeholder="Enter corporate email to request MIDL_InfoSec_Sanitizer.py" required>
+                    </div>
+                    <button type="submit" class="cta-button" style="border-color: var(--text-muted); color: var(--text-muted);">Execute Triage</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>
